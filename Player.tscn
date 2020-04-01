@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Sprites/Character/player_placeholder.png" type="Texture" id=1]
 [ext_resource path="res://Player.gd" type="Script" id=2]
@@ -11,6 +11,9 @@
 [ext_resource path="res://Sprites/Character/forester_up.png" type="Texture" id=9]
 [ext_resource path="res://Sprites/Character/forester_right.png" type="Texture" id=10]
 [ext_resource path="res://Sprites/Character/forester_up_step2.png" type="Texture" id=11]
+[ext_resource path="res://Sprites/Character/forester_down_step1.png" type="Texture" id=12]
+[ext_resource path="res://Sprites/Character/forester_down_step2.png" type="Texture" id=13]
+[ext_resource path="res://Sprites/Character/forester_down.png" type="Texture" id=14]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 15.8847, 15.8813 )
@@ -32,7 +35,12 @@ animations = [ {
 "name": "up",
 "speed": 8.0
 }, {
-"frames": [ ExtResource( 10 ) ],
+"frames": [ ExtResource( 12 ), ExtResource( 14 ), ExtResource( 13 ), ExtResource( 14 ) ],
+"loop": true,
+"name": "down",
+"speed": 8.0
+}, {
+"frames": [ ExtResource( 14 ) ],
 "loop": true,
 "name": "stand",
 "speed": 5.0
@@ -55,4 +63,4 @@ shape = SubResource( 1 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 scale = Vector2( 3, 3 )
 frames = SubResource( 2 )
-animation = "right"
+animation = "down"

@@ -16,8 +16,10 @@ func _physics_process(delta):
             $AnimatedSprite.play("up")
         elif input_vector.x < 0:
             $AnimatedSprite.play("left")
-        else:
+        elif input_vector.x > 0:
             $AnimatedSprite.play("right")
+        else:
+            $AnimatedSprite.play("down")
     else:
         velocity = input_vector #changed to stop the player immediately
         #velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
