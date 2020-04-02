@@ -1,6 +1,5 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=17 format=2]
 
-[ext_resource path="res://Sprites/Character/player_placeholder.png" type="Texture" id=1]
 [ext_resource path="res://Player.gd" type="Script" id=2]
 [ext_resource path="res://Sprites/Character/forester_left_step2.png" type="Texture" id=3]
 [ext_resource path="res://Sprites/Character/forester_right_step2.png" type="Texture" id=4]
@@ -17,7 +16,7 @@
 [ext_resource path="res://Sprites/Character/forester_down2.png" type="Texture" id=16]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 15.8847, 15.8813 )
+extents = Vector2( 10.1288, 15.9988 )
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
@@ -36,27 +35,28 @@ animations = [ {
 "name": "up",
 "speed": 8.0
 }, {
-"frames": [ ExtResource( 12 ), ExtResource( 14 ), ExtResource( 13 ), ExtResource( 14 ) ],
-"loop": true,
-"name": "down",
-"speed": 8.0
-}, {
 "frames": [ ExtResource( 14 ), ExtResource( 14 ), ExtResource( 14 ), ExtResource( 14 ), ExtResource( 14 ), ExtResource( 14 ), ExtResource( 14 ), ExtResource( 16 ), ExtResource( 14 ), ExtResource( 14 ), ExtResource( 14 ), ExtResource( 14 ), ExtResource( 16 ), ExtResource( 14 ), ExtResource( 14 ), ExtResource( 14 ), ExtResource( 14 ), ExtResource( 14 ) ],
 "loop": true,
 "name": "stand",
 "speed": 8.0
+}, {
+"frames": [ ExtResource( 12 ), ExtResource( 14 ), ExtResource( 13 ), ExtResource( 14 ) ],
+"loop": true,
+"name": "down",
+"speed": 8.0
 } ]
 
 [node name="Player" type="KinematicBody2D"]
-position = Vector2( 1, 0 )
+position = Vector2( 0.0473843, -0.119078 )
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_group_": true
 }
 
 [node name="Sprite" type="Sprite" parent="."]
-visible = false
-texture = ExtResource( 1 )
+position = Vector2( 0, 0.0297699 )
+scale = Vector2( 1, 0.998139 )
+texture = ExtResource( 14 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
@@ -64,4 +64,3 @@ shape = SubResource( 1 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 scale = Vector2( 3, 3 )
 frames = SubResource( 2 )
-animation = "stand_left"
