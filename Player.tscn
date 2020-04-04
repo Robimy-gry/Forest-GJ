@@ -16,7 +16,7 @@
 [ext_resource path="res://Sprites/Character/forester_down2.png" type="Texture" id=16]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 10.1288, 15.9988 )
+extents = Vector2( 10.1288, 16.2339 )
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
