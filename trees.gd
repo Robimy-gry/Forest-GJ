@@ -1,0 +1,24 @@
+extends Node
+
+
+
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(delta):
+#	pass
+
+func getTree(index):
+	var path = "tree_"+String(index)
+	return get_node(path)
+
+
+func _on_TreeTimer_timeout():
+	var index = randi() % 5 + 1
+	getTree(index).setFire()
+	
