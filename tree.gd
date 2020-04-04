@@ -18,5 +18,6 @@ func putOutFire():
 	
 	
 func _on_tree_body_entered(body):
-	if body.get_name() == 'Player':
+	if body.get_name() == 'Player' and GlobalWorld.isBucketFilled == true:
 		putOutFire()
+		GlobalWorld.isBucketFilled = false

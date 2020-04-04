@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://GrassTileset1.tres" type="TileSet" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://tree.tscn" type="PackedScene" id=4]
 [ext_resource path="res://trees.gd" type="Script" id=5]
 [ext_resource path="res://World.gd" type="Script" id=6]
+[ext_resource path="res://WaterArea.gd" type="Script" id=7]
 
 [node name="World" type="Node2D"]
 script = ExtResource( 6 )
@@ -57,4 +58,11 @@ position = Vector2( 169.427, 311.925 )
 [node name="TreeTimer" type="Timer" parent="trees"]
 wait_time = 5.0
 autostart = true
+
+[node name="WaterArea" type="Area2D" parent="."]
+script = ExtResource( 7 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="WaterArea"]
+polygon = PoolVector2Array( 550.8, 638.35, 554.6, 422.7, 813.95, 414.15, 821.55, 4.70003, 961.006, 4.45697, 959.778, 636.742 )
 [connection signal="timeout" from="trees/TreeTimer" to="trees" method="_on_TreeTimer_timeout"]
+[connection signal="body_entered" from="WaterArea" to="WaterArea" method="_on_WaterArea_body_entered"]
