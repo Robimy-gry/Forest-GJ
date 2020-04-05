@@ -20,5 +20,5 @@ func getTree(index):
 
 func _on_TreeTimer_timeout():
     var index = randi() % 5 + 1
-    getTree(index).setFire()
+    #getTree(index).setFire()
     

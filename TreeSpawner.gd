@@ -53,10 +53,21 @@ func test_position(position : Vector2):
                 break
     
     var players = get_tree().get_nodes_in_group("player")
+    print(get_tree().get_nodes_in_group("player").size())
     for player in players:
+        print(player.get_position())
         if(
             (position.x < player.get_position().x+60 && position.x > player.get_position().x-60) &&
             (position.y < player.get_position().y+60 && position.y > player.get_position().y-60) 
+            ):
+            no_trees = false
+            break
+            
+    var objects = get_tree().get_nodes_in_group("objects")       
+    for object in objects:
+        if(
+            (position.x < object.get_position().x+60 && position.x > object.get_position().x-60) &&
+            (position.y < object.get_position().y+60 && position.y > object.get_position().y-60) 
             ):
             no_trees = false
             break
