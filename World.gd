@@ -1,14 +1,30 @@
 extends Node2D
 
-var hasBucket = true # wartość 'true' jest do testów - w momencie, gdy będzie wiadro, 
-					#to trzeba zmienić na 'false' i ustawiać true, gdy gracz podniesie wiadro
+
+var tools = {
+ "bucket":false,
+ "axe":false
+}
+
 var isBucketFilled = false
+
+signal toolwasChanged
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	
 	randomize()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+
+
+func changeTool(ele):
+	if ele:
+		for key in tools:
+			tools[key] = false
+		tools[ele] = true
+		emit_signal("toolwasChanged")
+
