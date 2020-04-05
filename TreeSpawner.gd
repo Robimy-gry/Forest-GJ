@@ -33,6 +33,7 @@ func instance_tree():
         tree_count += 1
         tree.position.x = temp_x
         tree.position.y = temp_y
+        tree.grow()
 
 
 func test_position(position : Vector2):
