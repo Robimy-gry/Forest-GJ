@@ -1,6 +1,6 @@
 extends Node2D
 
-
+var collection_trees = null
 var tools = {
  "bucket":false,
  "axe":false,
