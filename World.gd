@@ -12,7 +12,8 @@ signal toolwasChanged
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	
+	add_to_group("World")
+	guiInvisible()
 	randomize()
 
 
@@ -27,4 +28,16 @@ func changeTool(ele):
 			tools[key] = false
 		tools[ele] = true
 		emit_signal("toolwasChanged")
+		
+func guiAxe():
+	get_tree().call_group("GUI", "axeVisible")
+	
+func guiBucketEmpty():
+	get_tree().call_group("GUI", "bucketEmptyVisible")
+
+func guiBucketFull():
+	get_tree().call_group("GUI", "bucketFullVisible")
+
+func guiInvisible():
+	get_tree().call_group("GUI", "invisible")
 

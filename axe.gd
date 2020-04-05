@@ -36,15 +36,15 @@ func getAxe():
 		if GlobalWorld.tools["axe"] == false:
 			GlobalWorld.changeTool("axe")
 			hideAxe()
+			get_tree().call_group("World", "guiAxe")
 		else:
 			GlobalWorld.tools["axe"] = false
+			get_tree().call_group("World", "guiInvisible")
 			showAxe()
 		$PickObjectSFX2.play()
 		yield(get_tree().create_timer(0.5), "timeout")
 		$CollisionShape2D.set_deferred("disabled",false)
 	
-	
-
 func _on_axe_body_entered(body):
 	if body.is_in_group('Player'):
 		canTakeAxe = true

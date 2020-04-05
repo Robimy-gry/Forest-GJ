@@ -55,6 +55,7 @@ func interactWithTree():
 			chopedTree()
 		if GlobalWorld.isBucketFilled == true and GlobalWorld.tools["bucket"] and fire.is_visible_in_tree():
 			putOutFire()
+			get_tree().call_group("World", "guiBucketEmpty")
 	
 func _on_tree_body_exited(body):
 	if body.is_in_group('Player'):

@@ -12,6 +12,7 @@ func refillWater():
 			if GlobalWorld.isBucketFilled == false:
 				$Splash1.play()
 			GlobalWorld.isBucketFilled = true
+			get_tree().call_group("World", "guiBucketFull")
 			emit_signal("filledBucket")
 
 func _on_WaterArea_body_entered(body):
