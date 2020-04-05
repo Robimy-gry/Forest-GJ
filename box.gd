@@ -4,11 +4,11 @@ extends Area2D
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-var canTakeAxe = false
+var canOpened = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$Stump.hide()
+	$OpenedBox.hide()
 	$"/root/GlobalWorld".connect("toolwasChanged",self,"_on_World_toolChanged")
 	pass # Replace with function body.
 
@@ -18,41 +18,40 @@ func _ready():
 #	pass
 
 func _physics_process(delta):
+	takeTools()
+
+func openBox():
+	$OpenedBox.show()
+	$CloseBox.hide()
+
+func closeBox():
+	$OpenedBox.hide()
+	$CloseBox.show()
 	
-	getAxe()
 
-func hideAxe():
-	$Stump.show()
-	$StumpAxe.hide()
-
-func showAxe():
-	$StumpAxe.show()
-	$Stump.hide()
-	
-
-func getAxe():
-	if canTakeAxe and Input.is_action_pressed("ui_select"):
-		$CollisionShape2D.set_deferred("disabled",true)
-		if GlobalWorld.tools["axe"] == false:
-			GlobalWorld.changeTool("axe")
-			hideAxe()
+func takeTools():
+	if canOpened and Input.is_action_pressed("ui_select"):
+		if GlobalWorld.tools["toolsBox"] == false:
+			GlobalWorld.changeTool("toolsBox")
+			openBox()
+			$PickObjectSFX.play()
 		else:
-			GlobalWorld.tools["axe"] = false
-			showAxe()
-		$PickObjectSFX.play()
+			GlobalWorld.tools["toolsBox"] = false
+			closeBox()
+		$CollisionShape2D.set_deferred("disabled",true)
 		yield(get_tree().create_timer(0.5), "timeout")
 		$CollisionShape2D.set_deferred("disabled",false)
 	
 	
 
-func _on_axe_body_entered(body):
+func _on_box_body_entered(body):
 	if body.is_in_group('Player'):
-		canTakeAxe = true
+		canOpened = true
 
 
-func _on_axe_body_exited(body):
+func _on_box_body_exited(body):
 	if body.is_in_group('Player'):
-		canTakeAxe = false
+		canOpened = false
 		
 		
 	
@@ -60,6 +59,6 @@ func _on_axe_body_exited(body):
 
 func _on_World_toolChanged():
 	print(GlobalWorld.tools)
-	if GlobalWorld.tools["axe"] == false:
-		showAxe() 
+	if GlobalWorld.tools["toolsBox"] == false:
+		closeBox() 
 

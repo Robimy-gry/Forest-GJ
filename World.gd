@@ -3,7 +3,8 @@ extends Node2D
 
 var tools = {
  "bucket":false,
- "axe":false
+ "axe":false,
+"toolsBox":false
 }
 
 var isBucketFilled = false
@@ -28,3 +29,10 @@ func changeTool(ele):
 		tools[ele] = true
 		emit_signal("toolwasChanged")
 
+
+
+func _on_Trap_removeTrap():
+	$traps/Trap.hide()
+	yield(get_tree().create_timer(5.0),"timeout")
+	$traps/Trap.show()
+	pass # Replace with function body.
