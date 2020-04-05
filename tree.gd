@@ -3,6 +3,7 @@ extends Area2D
 onready var tree = get_node("TreeSprite")
 onready var fire = get_node("FireSprite")
 onready var stump = get_node("Stump")
+onready var dead = get_node("DeadTree")
 var trees = ["res://Sprites/trees/tree1.png", 
     "res://Sprites/trees/tree2.png", 
     "res://Sprites/trees/tree3.png"]
@@ -21,6 +22,7 @@ func _ready():
     fire.hide()
     stump.hide()
     tree.hide()
+    dead.hide()
 
 func setFire():
     if !deadTree:
