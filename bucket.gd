@@ -31,12 +31,13 @@ func _physics_process(delta):
 
 
 func getBucket():
-	if canTakeBucket and Input.is_action_pressed("ui_select"):
+	if canTakeBucket and Input.is_action_just_pressed("ui_select"):
 		$CollisionShape2D.set_deferred("disabled",true)
 		if GlobalWorld.tools['bucket'] == false:
 			GlobalWorld.changeTool('bucket')
 		else:
 			GlobalWorld.tools['bucket'] = false
+		$PickObjectSFX.play()
 		yield(get_tree().create_timer(0.5), "timeout")
 		$CollisionShape2D.set_deferred('disabled',false)
 

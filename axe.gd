@@ -39,6 +39,7 @@ func getAxe():
 		else:
 			GlobalWorld.tools["axe"] = false
 			showAxe()
+		$PickObjectSFX2.play()
 		yield(get_tree().create_timer(0.5), "timeout")
 		$CollisionShape2D.set_deferred("disabled",false)
 	

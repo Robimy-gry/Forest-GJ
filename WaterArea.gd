@@ -7,8 +7,10 @@ func _physics_process(delta):
 	refillWater()
 
 func refillWater():
-	if canFillWater == true and Input.is_action_pressed("ui_select"):
+	if canFillWater == true and Input.is_action_just_pressed("ui_select"):
 		if GlobalWorld.tools["bucket"] == true:
+			if GlobalWorld.isBucketFilled == false:
+				$Splash1.play()
 			GlobalWorld.isBucketFilled = true
 			emit_signal("filledBucket")
 
