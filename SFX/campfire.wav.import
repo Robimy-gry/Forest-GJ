@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/campfire.wav-574e39850af567c63ba8e0e9d53d6abb.sample"
+
+[deps]
+
+source_file="res://SFX/campfire.wav"
+dest_files=[ "res://.import/campfire.wav-574e39850af567c63ba8e0e9d53d6abb.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
