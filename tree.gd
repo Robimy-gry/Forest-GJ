@@ -38,6 +38,7 @@ func chopedTree():
 	if deadTree == false:
 		$TreeCut.play()
 	deadTree = true
+	$Fire.stop()
 
 	
 func _on_tree_body_entered(body):
