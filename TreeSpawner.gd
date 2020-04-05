@@ -5,11 +5,13 @@ var tilemap
 export var spawn_area : Rect2 = Rect2(50, 50, 700, 700)
 export var max_trees = 15
 export var start_trees = 5
-var tree_count = 0
+var tree_count = 0 setget , tree_count_get
 var tree_scene = preload("res://tree.tscn")
 
 var random = RandomNumberGenerator.new()
 
+func tree_count_get():
+    return tree_count
 
 func instance_tree():
     
@@ -53,9 +55,7 @@ func test_position(position : Vector2):
                 break
     
     var players = get_tree().get_nodes_in_group("player")
-    print(get_tree().get_nodes_in_group("player").size())
     for player in players:
-        print(player.get_position())
         if(
             (position.x < player.get_position().x+60 && position.x > player.get_position().x-60) &&
             (position.y < player.get_position().y+60 && position.y > player.get_position().y-60) 

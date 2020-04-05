@@ -14,11 +14,14 @@ func _ready():
 #	pass
 
 func getTree(index):
-    var path = "tree_"+String(index)
-    return get_node(path)
+    #var path = "tree_"+String(index)
+    var node = find_node("TreeSpawner").get_child(index)
+    return node
 
 
 func _on_TreeTimer_timeout():
-    var index = randi() % 5 + 1
-    #getTree(index).setFire()
+    var num_trees = find_node("TreeSpawner").tree_count_get()
+    #node 0 is Timer, so counting from node 1
+    var index = randi() % num_trees+1
+    getTree(index).setFire()
     
