@@ -29,7 +29,8 @@ func putOutFire():
         if GlobalWorld.isBucketFilled == true:
             $Splash.play()
         GlobalWorld.isBucketFilled = false
-        emit_signal("usedWater")
+        #emit_signal("usedWater")
+        get_tree().call_group("bucket", "usedWater")
 
 func chopedTree():
     stump.show()

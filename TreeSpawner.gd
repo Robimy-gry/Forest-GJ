@@ -25,11 +25,12 @@ func instance_tree():
         counter +=1
         temp_x = spawn_area.position.x + random.randf_range(0, spawn_area.size.x)
         temp_y = spawn_area.position.y + random.randf_range(0, spawn_area.size.y)
-        valid_position = test_position(Vector2(temp_x, temp_y))
+        valid_position = test_position(Vector2(temp_x, temp_y+35))
         
     if (valid_position):
         var tree = tree_scene.instance()
         add_child(tree)
+        tree_count += 1
         tree.position.x = temp_x
         tree.position.y = temp_y
 
@@ -84,10 +85,8 @@ func _ready():
     
     for i in range(start_trees):
         instance_tree()
-    tree_count = start_trees
 
 func _on_Timer_timeout():
     
     if tree_count < max_trees:
         instance_tree()
-        tree_count = tree_count + 1
