@@ -13,7 +13,7 @@ height = 5.92932
 extents = Vector2( 14.747, 17.3059 )
 
 [node name="tree" type="Area2D"]
-position = Vector2( 0, -35.0316 )
+position = Vector2( 0, 1.11482 )
 scale = Vector2( 2, 2 )
 script = ExtResource( 3 )
 __meta__ = {

@@ -47,14 +47,19 @@ func test_position(position : Vector2):
         if tree_node.get_class() == "Area2D":
             if(
                 (position.x < tree_node.get_position().x+120 && position.x > tree_node.get_position().x-120) &&
-                (position.y < tree_node.get_position().y+120 && position.y > tree_node.get_position().y-120)
-                #(position.x != tree_node.get_position().x || position.y != tree_node.get_position().y)
+                (position.y < tree_node.get_position().y+120 && position.y > tree_node.get_position().y-120) 
                 ):
-                print(position.x, position.y)
-                print(tree_node.get_position().x, tree_node.get_position().y)
                 no_trees = false
                 break
-    print("No trees: ", no_trees)
+    
+    var players = get_tree().get_nodes_in_group("player")
+    for player in players:
+        if(
+            (position.x < player.get_position().x+60 && position.x > player.get_position().x-60) &&
+            (position.y < player.get_position().y+60 && position.y > player.get_position().y-60) 
+            ):
+            no_trees = false
+            break
     
     return is_grass and no_trees
     
