@@ -36,6 +36,9 @@ height = 5.34207
 
 [node name="World" type="Node2D"]
 script = ExtResource( 6 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 551.859, 449.956 ]
+}
 
 [node name="Grass" type="TileMap" parent="."]
 tile_set = ExtResource( 2 )
@@ -171,7 +174,7 @@ script = ExtResource( 5 )
 "trees_grp",
 ] instance=ExtResource( 4 )]
 position = Vector2( 1, 0 )
-spawn_area = Rect2( 50, 250, 750, 350 )
+spawn_area = Rect2( 50, 250, 750, 250 )
 max_trees = 20
 
 [node name="TreeTimer" type="Timer" parent="trees"]
