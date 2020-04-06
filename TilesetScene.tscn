@@ -289,7 +289,7 @@ collision_mask = 0
 shape = SubResource( 4 )
 
 [node name="Sprite105" type="Sprite" parent="."]
-position = Vector2( 620.498, 130.631 )
+position = Vector2( 445.355, 122.67 )
 texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 32, 160, 32, 32 )
@@ -300,6 +300,19 @@ __meta__ = {
 [node name="StaticBody2D" type="StaticBody2D" parent="Sprite105"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite105/StaticBody2D"]
+shape = SubResource( 5 )
+
+[node name="CollisitionTile" type="Sprite" parent="."]
+position = Vector2( 604.614, 126.757 )
+region_enabled = true
+region_rect = Rect2( 32, 160, 32, 32 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="CollisitionTile"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisitionTile/StaticBody2D"]
 shape = SubResource( 5 )
 
 [node name="Sprite106" type="Sprite" parent="."]
