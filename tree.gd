@@ -52,10 +52,6 @@ func putOutFire():
 		GlobalWorld.isBucketFilled = false
 		#emit_signal("usedWater")
 		get_tree().call_group("bucket", "usedWater")
-<<<<<<< HEAD
-
-=======
->>>>>>> add trapSpawner
 
 func chopedTree():
 	stump.show()

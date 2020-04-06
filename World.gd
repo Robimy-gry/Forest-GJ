@@ -30,12 +30,10 @@ func _ready():
 	add_to_group("World")
 	guiInvisible()
 	randomize()
-<<<<<<< HEAD
 
 func _physics_process(delta):
 	main_menu()
-=======
->>>>>>> add trapSpawner
+
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

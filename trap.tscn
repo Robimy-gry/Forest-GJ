@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Sprites/objects/trap.png" type="Texture" id=1]
 [ext_resource path="res://trap.gd" type="Script" id=2]
+[ext_resource path="res://Sprites/objects/trap_close.png" type="Texture" id=3]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 8.63554
@@ -13,6 +14,10 @@ extents = Vector2( 10.6789, 10.8659 )
 position = Vector2( 0, 0.0809937 )
 scale = Vector2( 2, 2 )
 script = ExtResource( 2 )
+
+[node name="close" type="Sprite" parent="."]
+scale = Vector2( 0.364, 0.338 )
+texture = ExtResource( 3 )
 
 [node name="trap" type="Sprite" parent="."]
 position = Vector2( 0.15781, 0.193598 )
