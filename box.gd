@@ -35,9 +35,12 @@ func takeTools():
 			GlobalWorld.changeTool("toolsBox")
 			openBox()
 			$PickObjectSFX.play()
+			get_tree().call_group("GUI", "toolBoxVisible")
 		else:
 			GlobalWorld.tools["toolsBox"] = false
 			closeBox()
+			$PickObjectSFX.play()
+			get_tree().call_group("GUI", "invisible")
 		$CollisionShape2D.set_deferred("disabled",true)
 		yield(get_tree().create_timer(0.5), "timeout")
 		$CollisionShape2D.set_deferred("disabled",false)
