@@ -14,6 +14,8 @@ signal usedWater
 
 var canInteract = false
 var deadTree = false
+var isGrown = false
+var isBurnt = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -25,16 +27,26 @@ func _ready():
     burnt.hide()
 
 func setFire():
-    if !deadTree:
+    if !deadTree and !isBurnt and isGrown:
         $Fire.play()
         tree.hide()
         fire.show()
+        $BurnTimer.start()
+        
+func burnTree():
+    if !deadTree and !isBurnt and isGrown:
+        isBurnt = true
+        $Fire.stop()
+        tree.hide()
+        fire.hide()
+        burnt.show()
     
 func putOutFire():
     if !deadTree:
         tree.show()
         fire.hide()
         $Fire.stop()
+        $BurnTimer.stop()
         if GlobalWorld.isBucketFilled == true:
             $Splash.play()
         GlobalWorld.isBucketFilled = false
@@ -45,10 +57,14 @@ func chopedTree():
     stump.show()
     tree.hide()
     fire.hide()
+    burnt.hide()
     if deadTree == false:
         $TreeCut.play()
     deadTree = true
     $Fire.stop()
+    $BurnTimer.stop()
+    if deadTree == true:
+        $DisappearTimer.start()
 
     
 func _on_tree_body_entered(body):
@@ -60,7 +76,7 @@ func _physics_process(delta):
     interactWithTree()
     
 func interactWithTree():
-    if canInteract and Input.is_action_just_pressed("ui_select"):
+    if canInteract and Input.is_action_just_pressed("ui_select") and isGrown:
         if GlobalWorld.tools["axe"] == true:
             chopedTree()
         if GlobalWorld.isBucketFilled == true and GlobalWorld.tools["bucket"] and fire.is_visible_in_tree():
@@ -75,8 +91,18 @@ func grow():
     $AnimatedSprite.play("grow")
 
 func _on_AnimatedSprite_animation_finished() -> void:
+    $AnimatedSprite.hide()
+    isGrown = true
     tree.show()
+
+func _die():
+    GlobalWorld.tree_count -= 1
+    queue_free()
 
 
 func _on_DisappearTimer_timeout() -> void:
-    print("Tree died")
+    _die()
+    
+
+func _on_BurnTimer_timeout() -> void:
+    burnTree()

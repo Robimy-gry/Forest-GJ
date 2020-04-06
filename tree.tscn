@@ -82,7 +82,13 @@ volume_db = -8.0
 
 [node name="DisappearTimer" type="Timer" parent="."]
 wait_time = 5.0
+one_shot = true
+
+[node name="BurnTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
 [connection signal="body_entered" from="." to="." method="_on_tree_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_tree_body_exited"]
 [connection signal="animation_finished" from="AnimatedSprite" to="." method="_on_AnimatedSprite_animation_finished"]
 [connection signal="timeout" from="DisappearTimer" to="." method="_on_DisappearTimer_timeout"]
+[connection signal="timeout" from="BurnTimer" to="." method="_on_BurnTimer_timeout"]
