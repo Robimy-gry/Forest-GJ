@@ -10,10 +10,11 @@ func _ready():
 
 func destroyTrap():
 	emit_signal("removeTrap")
-	GlobalWorld.destroyed_traps += 1  # Trap stats
 	$CollisionShape2D.set_deferred("disabled",true)
 	yield(get_tree().create_timer(0.5), "timeout")
 	$CollisionShape2D.set_deferred("disabled",false)
+	GlobalWorld.trap_count -= 1
+	queue_free()
 	
 	
 func _on_trap_body_entered(body):
@@ -27,7 +28,6 @@ func _physics_process(delta):
 func interactWithTrap():
 	if canInteract and Input.is_action_pressed("ui_select"):
 		if GlobalWorld.tools["toolsBox"] :
-			print('trap destroy')
 			destroyTrap()
 	
 	

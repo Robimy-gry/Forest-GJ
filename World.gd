@@ -13,6 +13,7 @@ var time_played = 0
 #End of Stats
 
 var tree_count = 0
+var trap_count = 0
 
 var tools = {
  "bucket":false,
@@ -29,9 +30,12 @@ func _ready():
 	add_to_group("World")
 	guiInvisible()
 	randomize()
+<<<<<<< HEAD
 
 func _physics_process(delta):
 	main_menu()
+=======
+>>>>>>> add trapSpawner
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
