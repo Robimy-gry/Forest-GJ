@@ -21,7 +21,7 @@ var isBurnt = false
 func _ready():
     tree_number = (randi() % trees.size())
     tree.texture = load(trees[tree_number])
-    fire.hide()
+    #fire.hide()
     stump.hide()
     tree.hide()
     burnt.hide()
@@ -30,8 +30,10 @@ func _ready():
 func setFire():
     if !deadTree and !isBurnt and isGrown:
         $Fire.play()
-        tree.hide()
-        fire.show()
+        #tree.hide()
+        #fire.show()
+        $AnimatedSprite.show()
+        $AnimatedSprite.play("fire")
         $BurnTimer.start()
     
         
@@ -41,14 +43,18 @@ func burnTree():
         GlobalWorld.burnt_trees += 1 # Burnt trees stats
         $Fire.stop()
         tree.hide()
-        fire.hide()
+        #fire.hide()
+        $AnimatedSprite.stop()
+        $AnimatedSprite.hide()
         burnt.show()
     
     
 func putOutFire():
     if !deadTree:
         tree.show()
-        fire.hide()
+        #fire.hide()
+        $AnimatedSprite.stop()
+        $AnimatedSprite.hide()
         $Fire.stop()
         $BurnTimer.stop()
         GlobalWorld.extinguished_trees += 1 #extinguished trees stats
@@ -62,7 +68,9 @@ func putOutFire():
 func chopedTree():
     stump.show()
     tree.hide()
-    fire.hide()
+    #fire.hide()
+    $AnimatedSprite.stop()
+    $AnimatedSprite.hide()
     burnt.hide()
     if deadTree == false:
         $TreeCut.play()
@@ -102,11 +110,13 @@ func grow():
 
 
 func _on_AnimatedSprite_animation_finished() -> void:
-    $AnimatedSprite.hide()
-    isGrown = true
-    GlobalWorld.grown_trees += 1
-    tree.show()
-
+    if $AnimatedSprite.get_animation() == "grow":
+        $AnimatedSprite.hide()
+        isGrown = true
+        GlobalWorld.grown_trees += 1
+        tree.show()
+    if $AnimatedSprite.get_animation() == "fire":
+        $AnimatedSprite.flip_h = !$AnimatedSprite.flip_h
 
 func _die():
     GlobalWorld.tree_count -= 1
