@@ -35,8 +35,10 @@ func getBucket():
         $CollisionShape2D.set_deferred("disabled",true)
         if GlobalWorld.tools['bucket'] == false:
             GlobalWorld.changeTool('bucket')
+            get_tree().call_group("World", "guiBucketEmpty")
         else:
             GlobalWorld.tools['bucket'] = false
+            get_tree().call_group("World", "guiInvisible")
         $PickObjectSFX.play()
         yield(get_tree().create_timer(0.5), "timeout")
         $CollisionShape2D.set_deferred('disabled',false)
