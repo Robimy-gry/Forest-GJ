@@ -21,32 +21,43 @@ var isBurnt = false
 func _ready():
 	tree_number = (randi() % trees.size())
 	tree.texture = load(trees[tree_number])
-	fire.hide()
+	#fire.hide()
 	stump.hide()
 	tree.hide()
 	burnt.hide()
+	
 
 func setFire():
 	if !deadTree and !isBurnt and isGrown:
 		$Fire.play()
-		tree.hide()
-		fire.show()
+		#tree.hide()
+		#fire.show()
+		$AnimatedSprite.show()
+		$AnimatedSprite.play("fire")
 		$BurnTimer.start()
+	
 		
 func burnTree():
 	if !deadTree and !isBurnt and isGrown:
 		isBurnt = true
+		GlobalWorld.burnt_trees += 1 # Burnt trees stats
 		$Fire.stop()
 		tree.hide()
-		fire.hide()
+		#fire.hide()
+		$AnimatedSprite.stop()
+		$AnimatedSprite.hide()
 		burnt.show()
+	
 	
 func putOutFire():
 	if !deadTree:
 		tree.show()
-		fire.hide()
+		#fire.hide()
+		$AnimatedSprite.stop()
+		$AnimatedSprite.hide()
 		$Fire.stop()
 		$BurnTimer.stop()
+		GlobalWorld.extinguished_trees += 1 #extinguished trees stats
 		if GlobalWorld.isBucketFilled == true:
 			$Splash.play()
 		GlobalWorld.isBucketFilled = false
@@ -56,13 +67,16 @@ func putOutFire():
 func chopedTree():
 	stump.show()
 	tree.hide()
-	fire.hide()
+	#fire.hide()
+	$AnimatedSprite.stop()
+	$AnimatedSprite.hide()
 	burnt.hide()
 	if deadTree == false:
 		$TreeCut.play()
 	deadTree = true
 	$Fire.stop()
 	$BurnTimer.stop()
+	GlobalWorld.chopped_trees += 1 # Chopped trees stats
 	if deadTree == true:
 		$DisappearTimer.start()
 
@@ -74,7 +88,8 @@ func _on_tree_body_entered(body):
 # warning-ignore:unused_argument
 func _physics_process(delta):
 	interactWithTree()
-	
+   
+ 
 func interactWithTree():
 	if canInteract and Input.is_action_just_pressed("ui_select") and isGrown:
 		if GlobalWorld.tools["axe"] == true:
@@ -82,6 +97,7 @@ func interactWithTree():
 		if GlobalWorld.isBucketFilled == true and GlobalWorld.tools["bucket"] and fire.is_visible_in_tree():
 			putOutFire()
 			get_tree().call_group("World", "guiBucketEmpty")
+	
 	
 func _on_tree_body_exited(body):
 	if body.is_in_group('Player'):
