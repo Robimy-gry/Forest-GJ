@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/dead_tree.png-8d808eb7fa8f8acc7a335e4bb32ab874.stex"
+path="res://.import/burnt_tree.png-0c2c4a5042717bfe5b22afa76f5e6866.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/trees/dead_tree.png"
-dest_files=[ "res://.import/dead_tree.png-8d808eb7fa8f8acc7a335e4bb32ab874.stex" ]
+source_file="res://Sprites/trees/burnt_tree.png"
+dest_files=[ "res://.import/burnt_tree.png-0c2c4a5042717bfe5b22afa76f5e6866.stex" ]
 
 [params]
 
