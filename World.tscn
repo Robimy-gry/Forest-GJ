@@ -17,7 +17,7 @@
 [ext_resource path="res://Sprites/objects/opnedBox.png" type="Texture" id=15]
 [ext_resource path="res://SFX/pickobject.wav" type="AudioStream" id=16]
 [ext_resource path="res://box.gd" type="Script" id=17]
-[ext_resource path="res://trap.tscn" type="PackedScene" id=18]
+[ext_resource path="res://TrapSpawner.tscn" type="PackedScene" id=18]
 [ext_resource path="res://SFX/1.ogg" type="AudioStream" id=19]
 [ext_resource path="res://SFX/splash.wav" type="AudioStream" id=20]
 [ext_resource path="res://Sprites/objects/boxTools.png" type="Texture" id=21]
@@ -167,6 +167,10 @@ volume_db = -8.0
 position = Vector2( 518.151, 258.933 )
 scale = Vector2( 0.75, 0.75 )
 
+[node name="traps" type="Node" parent="."]
+
+[node name="TrapSpawner" parent="traps" instance=ExtResource( 18 )]
+
 [node name="trees" type="Node" parent="."]
 script = ExtResource( 5 )
 
@@ -180,13 +184,6 @@ max_trees = 20
 [node name="TreeTimer" type="Timer" parent="trees"]
 wait_time = 5.0
 autostart = true
-
-[node name="traps" type="Node" parent="."]
-
-[node name="Trap" parent="traps" groups=[
-"objects",
-] instance=ExtResource( 18 )]
-position = Vector2( 259.374, 417.014 )
 
 [node name="WaterArea" type="Area2D" parent="."]
 position = Vector2( 71, 13 )
@@ -210,12 +207,12 @@ volume_db = -8.0
 
 [node name="signs" type="Node2D" parent="."]
 
-[node name="Area2D" parent="signs" instance=ExtResource( 12 )]
+[node name="Area2d" parent="signs" instance=ExtResource( 12 )]
 position = Vector2( 442.699, 208.049 )
 
 [node name="Main" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 19 )
-volume_db = -20.194
+volume_db = -37.527
 autoplay = true
 
 [node name="GUI" parent="." instance=ExtResource( 22 )]
@@ -228,7 +225,6 @@ margin_bottom = 93.0
 [connection signal="body_entered" from="tools/box" to="tools/box" method="_on_box_body_entered"]
 [connection signal="body_exited" from="tools/box" to="tools/box" method="_on_box_body_exited"]
 [connection signal="timeout" from="trees/TreeTimer" to="trees" method="_on_TreeTimer_timeout"]
-[connection signal="removeTrap" from="traps/Trap" to="." method="_on_Trap_removeTrap"]
 [connection signal="body_entered" from="WaterArea" to="WaterArea" method="_on_WaterArea_body_entered"]
 [connection signal="body_exited" from="WaterArea" to="WaterArea" method="_on_WaterArea_body_exited"]
 [connection signal="filledBucket" from="WaterArea" to="tools/bucket" method="_on_WaterArea_filledBucket"]

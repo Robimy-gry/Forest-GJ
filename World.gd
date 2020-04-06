@@ -13,6 +13,7 @@ var time_played = 0
 #End of Stats
 
 var tree_count = 0
+var trap_count = 0
 
 var tools = {
  "bucket":false,
@@ -32,6 +33,7 @@ func _ready():
 
 func _physics_process(delta):
 	main_menu()
+
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

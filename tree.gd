@@ -53,7 +53,6 @@ func putOutFire():
 		#emit_signal("usedWater")
 		get_tree().call_group("bucket", "usedWater")
 
-
 func chopedTree():
 	stump.show()
 	tree.hide()
