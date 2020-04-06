@@ -29,6 +29,7 @@ signal toolwasChanged
 func _ready():
     add_to_group("World")
     guiInvisible()
+    resetStats()
     randomize()
 
 func _physics_process(delta):

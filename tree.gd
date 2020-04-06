@@ -95,7 +95,7 @@ func interactWithTree():
     if canInteract and Input.is_action_just_pressed("ui_select") and isGrown:
         if GlobalWorld.tools["axe"] == true:
             chopedTree()
-        if GlobalWorld.isBucketFilled == true and GlobalWorld.tools["bucket"] and ($AnimatedSprite.get_animation() == "fire"):#and fire.is_visible_in_tree():
+        if GlobalWorld.isBucketFilled == true and GlobalWorld.tools["bucket"] and ($AnimatedSprite.get_animation() == "fire") and !isBurnt:#and fire.is_visible_in_tree():
             putOutFire()
             get_tree().call_group("World", "guiBucketEmpty")
     
