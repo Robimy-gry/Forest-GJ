@@ -22,6 +22,6 @@ func getTree(index):
 func _on_TreeTimer_timeout():
     #node 0 is Timer, so counting from node 1
     var index = (randi() % find_node("TreeSpawner").get_child_count()-1)+1
-    
-    getTree(index).setFire()
+    if(getTree(index).name != "Timer"):
+        getTree(index).setFire()
     
