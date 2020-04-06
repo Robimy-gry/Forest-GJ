@@ -28,6 +28,9 @@ func _physics_process(delta):
         $AnimatedSprite.play("stand")
         #velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
         
+    if Input.is_action_just_pressed("ui_accept"):
+        GlobalWorld.print_stats()
+        
     
     move_and_collide(velocity * delta)
         

@@ -48,8 +48,8 @@ func test_position(position : Vector2):
     for tree_node in collection_trees:
         if tree_node.get_class() == "Area2D":
             if(
-                (position.x < tree_node.get_position().x+120 && position.x > tree_node.get_position().x-120) &&
-                (position.y < tree_node.get_position().y+120 && position.y > tree_node.get_position().y-120) 
+                (position.x < tree_node.get_position().x+110 && position.x > tree_node.get_position().x-110) &&
+                (position.y < tree_node.get_position().y+110 && position.y > tree_node.get_position().y-110) 
                 ):
                 no_trees = false
                 break
