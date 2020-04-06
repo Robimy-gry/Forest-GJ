@@ -193,14 +193,14 @@ position = Vector2( 71, 13 )
 script = ExtResource( 7 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="WaterArea"]
-visible = false
-position = Vector2( 0, 0.902527 )
-polygon = PoolVector2Array( 575.402, 630.566, 578.697, 415.896, 827.081, 412.801, 821.55, 4.70003, 961.006, 4.45697, 959.778, 636.742 )
+position = Vector2( -76.345, -13.7792 )
+polygon = PoolVector2Array( 575.83, 639.673, 574.03, 414.512, 827.081, 412.801, 821.55, 4.70003, 961.006, 4.45697, 959.778, 636.742 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="WaterArea"]
-visible = false
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="WaterArea/StaticBody2D"]
+position = Vector2( -79.1245, -222.665 )
+scale = Vector2( 1.01652, 1.50071 )
 polygon = PoolVector2Array( 581.351, 423.744, 830.798, 421.754, 829.403, 563.044, 572.507, 560.722 )
 
 [node name="Splash1" type="AudioStreamPlayer2D" parent="WaterArea"]

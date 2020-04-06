@@ -9,7 +9,7 @@ var isBucketFilled = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$FilledBucket.hide()
+    $FilledBucket.hide()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -18,50 +18,50 @@ func _ready():
 
 
 func showFilled():
-	$FilledBucket.show()
-	$EmptyBucket.hide()
+    $FilledBucket.show()
+    $EmptyBucket.hide()
 
 func showEmpty():
-	$FilledBucket.hide()
-	$EmptyBucket.show()
+    $FilledBucket.hide()
+    $EmptyBucket.show()
 
 
 func _physics_process(delta):
-	getBucket()
+    getBucket()
 
 
 func getBucket():
-	if canTakeBucket and Input.is_action_just_pressed("ui_select"):
-		$CollisionShape2D.set_deferred("disabled",true)
-		if GlobalWorld.tools['bucket'] == false:
-			GlobalWorld.changeTool('bucket')
-			get_tree().call_group("World", "guiBucketEmpty")
-		else:
-			GlobalWorld.tools['bucket'] = false
-			get_tree().call_group("World", "guiInvisible")
-		$PickObjectSFX.play()
-		yield(get_tree().create_timer(0.5), "timeout")
-		$CollisionShape2D.set_deferred('disabled',false)
+    if canTakeBucket and Input.is_action_just_pressed("ui_select"):
+        $CollisionShape2D.set_deferred("disabled",true)
+        if GlobalWorld.tools['bucket'] == false:
+            GlobalWorld.changeTool('bucket')
+            get_tree().call_group("World", "guiBucketEmpty")
+        else:
+            GlobalWorld.tools['bucket'] = false
+            get_tree().call_group("World", "guiInvisible")
+        $PickObjectSFX.play()
+        yield(get_tree().create_timer(0.5), "timeout")
+        $CollisionShape2D.set_deferred('disabled',false)
 
 
 func _on_bucket_body_entered(body):
-	if body.is_in_group('Player'):
-		canTakeBucket = true
+    if body.is_in_group('Player'):
+        canTakeBucket = true
 
 
 func _on_bucket_body_exited(body):
-	if body.is_in_group('Player'):
-		canTakeBucket = false
+    if body.is_in_group('Player'):
+        canTakeBucket = false
 
 
 func _on_WaterArea_filledBucket():
-	showFilled()
-	
-	
+    showFilled()
+    
+    
 func usedWater():
-	showEmpty()
+    showEmpty()
    
 
 func _on_World_toolChanged():
-	print('changed')
-	pass # Replace with function body.
+    print('changed')
+    pass # Replace with function body.
